@@ -3,7 +3,6 @@
 
    This is free and unencumbered software released into the public domain.
 */
-using System;
 
 /// <summary>
 /// Floyd-Steinberg dithering for RGB bytes
@@ -14,7 +13,7 @@ public sealed class FloydSteinbergDitheringRGBByte : DitheringBase<byte>
 	/// Constructor for Floyd-Steinberg dithering
 	/// </summary>
 	/// <param name="colorfunc">Color function</param>
-	public FloydSteinbergDitheringRGBByte(ColorFunction colorfunc) : base(colorfunc, "Floyd-Steinberg", "_FS")
+	public FloydSteinbergDitheringRGBByte(ColorFunction colorfunc) : base(colorfunc, "Floyd-Steinberg")
     {
 
     }
@@ -36,25 +35,25 @@ public sealed class FloydSteinbergDitheringRGBByte : DitheringBase<byte>
 		int yPlusOne = y + 1;
 
         // Current row
-        if (this.IsValidCoordinate(xPlusOne, y))
+        if (IsValidCoordinate(xPlusOne, y))
 		{
-            this.ModifyImageWithErrorAndMultiplier(xPlusOne, y,           quantError, 7.0 / 16.0);
+            ModifyImageWithErrorAndMultiplier(xPlusOne, y,           quantError, 7.0 / 16.0);
 		}
 
         // Next row
-        if (this.IsValidCoordinate(xMinusOne, yPlusOne))
+        if (IsValidCoordinate(xMinusOne, yPlusOne))
 		{
-            this.ModifyImageWithErrorAndMultiplier(xMinusOne, yPlusOne,   quantError, 3.0 / 16.0);
+            ModifyImageWithErrorAndMultiplier(xMinusOne, yPlusOne,   quantError, 3.0 / 16.0);
 		}
 
-		if (this.IsValidCoordinate(x, yPlusOne))
+		if (IsValidCoordinate(x, yPlusOne))
 		{
-            this.ModifyImageWithErrorAndMultiplier(x, yPlusOne,           quantError, 5.0 / 16.0);
+            ModifyImageWithErrorAndMultiplier(x, yPlusOne,           quantError, 5.0 / 16.0);
 		}
 
-		if (this.IsValidCoordinate(xPlusOne, yPlusOne))
+		if (IsValidCoordinate(xPlusOne, yPlusOne))
 		{
-            this.ModifyImageWithErrorAndMultiplier(xPlusOne, yPlusOne,    quantError, 1.0 / 16.0);
+            ModifyImageWithErrorAndMultiplier(xPlusOne, yPlusOne,    quantError, 1.0 / 16.0);
 		}
 	}
 }

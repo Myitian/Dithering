@@ -2,19 +2,20 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <PackageId>LibDithering</PackageId>
+    <PackageId>Myitian.Dithering</PackageId>
     <VersionPrefix>0.9.3</VersionPrefix>
     <VersionSuffix>$(VersionSuffix)</VersionSuffix>
     <Authors>Myitian</Authors>
     <Description></Description>
     <IncludeSource>true</IncludeSource>
     <PackageProjectUrl></PackageProjectUrl>
-    <RepositoryUrl></RepositoryUrl>
+    <RepositoryUrl>https://github.com/Myitian/Dithering</RepositoryUrl>
     <PackageLicenseExpression>Unlicense</PackageLicenseExpression>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <RootNamespace>Myitian.LibDithering</RootNamespace>
-    <Version>1.0.0</Version>
+    <RootNamespace>Myitian.Dithering</RootNamespace>
+    <Version>1.0.1</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <AssemblyName>Myitian.Dithering</AssemblyName>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">

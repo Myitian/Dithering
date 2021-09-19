@@ -4,7 +4,6 @@
    This is free and unencumbered software released into the public domain.
 */
 
-using System;
 
 /// <summary>
 /// Stucki dithering for RGB bytes
@@ -15,7 +14,7 @@ public sealed class StuckiDitheringRGBByte : DitheringBase<byte>
 	/// Constructor for Stucki dithering
 	/// </summary>
 	/// <param name="colorfunc">Color function</param>
-	public StuckiDitheringRGBByte(ColorFunction colorfunc) : base(colorfunc, "Stucki", "_STU")
+	public StuckiDitheringRGBByte(ColorFunction colorfunc) : base(colorfunc, "Stucki")
 	{
 
 	}
@@ -42,68 +41,68 @@ public sealed class StuckiDitheringRGBByte : DitheringBase<byte>
 
 		// Current row
 		int currentRow = y;
-		if (this.IsValidCoordinate(xPlusOne, currentRow))
+		if (IsValidCoordinate(xPlusOne, currentRow))
 		{
-			this.ModifyImageWithErrorAndMultiplier(xPlusOne, currentRow, quantError, 8.0 / 42.0);
+			ModifyImageWithErrorAndMultiplier(xPlusOne, currentRow, quantError, 8.0 / 42.0);
 		}
 
-		if (this.IsValidCoordinate(xPlusTwo, currentRow))
+		if (IsValidCoordinate(xPlusTwo, currentRow))
 		{
-			this.ModifyImageWithErrorAndMultiplier(xPlusTwo, currentRow, quantError, 4.0 / 42.0);
+			ModifyImageWithErrorAndMultiplier(xPlusTwo, currentRow, quantError, 4.0 / 42.0);
 		}
 
 		// Next row
 		currentRow = yPlusOne;
-		if (this.IsValidCoordinate(xMinusTwo, currentRow))
+		if (IsValidCoordinate(xMinusTwo, currentRow))
 		{
-			this.ModifyImageWithErrorAndMultiplier(xMinusTwo, currentRow, quantError, 2.0 / 42.0);
+			ModifyImageWithErrorAndMultiplier(xMinusTwo, currentRow, quantError, 2.0 / 42.0);
 		}
 
-		if (this.IsValidCoordinate(xMinusOne, currentRow))
+		if (IsValidCoordinate(xMinusOne, currentRow))
 		{
-			this.ModifyImageWithErrorAndMultiplier(xMinusOne, currentRow, quantError, 4.0 / 42.0);
+			ModifyImageWithErrorAndMultiplier(xMinusOne, currentRow, quantError, 4.0 / 42.0);
 		}
 
-		if (this.IsValidCoordinate(x, currentRow))
+		if (IsValidCoordinate(x, currentRow))
 		{
-			this.ModifyImageWithErrorAndMultiplier(x, currentRow, quantError, 8.0 / 42.0);
+			ModifyImageWithErrorAndMultiplier(x, currentRow, quantError, 8.0 / 42.0);
 		}
 
-		if (this.IsValidCoordinate(xPlusOne, currentRow))
+		if (IsValidCoordinate(xPlusOne, currentRow))
 		{
-			this.ModifyImageWithErrorAndMultiplier(xPlusOne, currentRow, quantError, 4.0 / 42.0);
+			ModifyImageWithErrorAndMultiplier(xPlusOne, currentRow, quantError, 4.0 / 42.0);
 		}
 
-		if (this.IsValidCoordinate(xPlusTwo, currentRow))
+		if (IsValidCoordinate(xPlusTwo, currentRow))
 		{
-			this.ModifyImageWithErrorAndMultiplier(xPlusTwo, currentRow, quantError, 2.0 / 42.0);
+			ModifyImageWithErrorAndMultiplier(xPlusTwo, currentRow, quantError, 2.0 / 42.0);
 		}
 
 		// Next row
 		currentRow = yPlusTwo;
-		if (this.IsValidCoordinate(xMinusTwo, currentRow))
+		if (IsValidCoordinate(xMinusTwo, currentRow))
 		{
-			this.ModifyImageWithErrorAndMultiplier(xMinusTwo, currentRow, quantError, 1.0 / 42.0);
+			ModifyImageWithErrorAndMultiplier(xMinusTwo, currentRow, quantError, 1.0 / 42.0);
 		}
 
-		if (this.IsValidCoordinate(xMinusOne, currentRow))
+		if (IsValidCoordinate(xMinusOne, currentRow))
 		{
-			this.ModifyImageWithErrorAndMultiplier(xMinusOne, currentRow, quantError, 2.0 / 42.0);
+			ModifyImageWithErrorAndMultiplier(xMinusOne, currentRow, quantError, 2.0 / 42.0);
 		}
 
-		if (this.IsValidCoordinate(x, currentRow))
+		if (IsValidCoordinate(x, currentRow))
 		{
-			this.ModifyImageWithErrorAndMultiplier(x, currentRow, quantError, 4.0 / 42.0);
+			ModifyImageWithErrorAndMultiplier(x, currentRow, quantError, 4.0 / 42.0);
 		}
 
-		if (this.IsValidCoordinate(xPlusOne, currentRow))
+		if (IsValidCoordinate(xPlusOne, currentRow))
 		{
-			this.ModifyImageWithErrorAndMultiplier(xPlusOne, currentRow, quantError, 2.0 / 42.0);
+			ModifyImageWithErrorAndMultiplier(xPlusOne, currentRow, quantError, 2.0 / 42.0);
 		}
 
-		if (this.IsValidCoordinate(xPlusTwo, currentRow))
+		if (IsValidCoordinate(xPlusTwo, currentRow))
 		{
-			this.ModifyImageWithErrorAndMultiplier(xPlusTwo, currentRow, quantError, 1.0 / 42.0);
+			ModifyImageWithErrorAndMultiplier(xPlusTwo, currentRow, quantError, 1.0 / 42.0);
 		}
 	}
 }

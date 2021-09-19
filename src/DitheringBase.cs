@@ -4,7 +4,6 @@
    This is free and unencumbered software released into the public domain.
 */
 
-using System;
 
 /// <summary>
 /// Abstract base class for dithering implementations
@@ -25,11 +24,6 @@ public abstract class DitheringBase<T>
 	/// Long name of the dither method
 	/// </summary>
 	private readonly string methodLongName = "";
-
-	/// <summary>
-	/// Filename addition
-	/// </summary>
-	private readonly string fileNameAddition = "";
 
 	/// <summary>
 	/// Color reduction function/method
@@ -55,12 +49,10 @@ public abstract class DitheringBase<T>
 	/// </summary>
 	/// <param name="colorfunc">Color reduction function/method</param>
 	/// <param name="longName">Long name of dither method</param>
-	/// <param name="fileNameAdd">Filename addition</param>
-	public DitheringBase(ColorFunction colorfunc, string longName, string fileNameAdd)
+	public DitheringBase(ColorFunction colorfunc, string longName)
 	{
-		this.colorFunction = colorfunc;
-		this.methodLongName = longName;
-		this.fileNameAddition = fileNameAdd;
+		colorFunction = colorfunc;
+		methodLongName = longName;
 	}
 
 	/// <summary>
@@ -70,28 +62,28 @@ public abstract class DitheringBase<T>
 	/// <returns>Dithered image</returns>
 	public IImageFormat<T> DoDithering(IImageFormat<T> input)
 	{
-		this.width = input.GetWidth();
-		this.height = input.GetHeight();
+		width = input.GetWidth();
+		height = input.GetHeight();
 		int channelsPerPixel = input.GetChannelsPerPixel();
-		this.currentBitmap = input;
+		currentBitmap = input;
 
 		T[] originalPixel = new T[channelsPerPixel];
 		T[] newPixel = new T[channelsPerPixel];
-		this.tempBuffer = new T[channelsPerPixel];
+		tempBuffer = new T[channelsPerPixel];
 		double[] quantError = new double[channelsPerPixel];
 
-		for (int y = 0; y < this.height; y++)
+		for (int y = 0; y < height; y++)
 		{
-			for (int x = 0; x < this.width; x++)
+			for (int x = 0; x < width; x++)
 			{
 				input.GetPixelChannels(x, y, ref originalPixel);
-				this.colorFunction(in x, in y,originalPixel, ref newPixel);
+				colorFunction(in x, in y,originalPixel, ref newPixel);
 
 				input.SetPixelChannels(x, y, newPixel);
 
 				input.GetQuantErrorsPerChannel(in originalPixel, in newPixel, ref quantError);
 
-				this.PushError(x, y, quantError);
+				PushError(x, y, quantError);
 			}
 		}
 
@@ -104,16 +96,7 @@ public abstract class DitheringBase<T>
 	/// <returns>String method name</returns>
 	public string GetMethodName()
 	{
-		return this.methodLongName;
-	}
-
-	/// <summary>
-	/// Get filename addition
-	/// </summary>
-	/// <returns></returns>
-	public string GetFilenameAddition()
-	{
-		return this.fileNameAddition;
+		return methodLongName;
 	}
 
 	/// <summary>
@@ -124,7 +107,7 @@ public abstract class DitheringBase<T>
 	/// <returns>True if valid; False otherwise</returns>
 	protected bool IsValidCoordinate(int x, int y)
 	{
-		return (0 <= x && x < this.width && 0 <= y && y < this.height);
+		return (0 <= x && x < width && 0 <= y && y < height);
 	}
 
 	/// <summary>
@@ -146,11 +129,11 @@ public abstract class DitheringBase<T>
 	/// <param name="multiplier">Multiplier</param>
 	public void ModifyImageWithErrorAndMultiplier(int x, int y, double[] quantError, double multiplier)
 	{
-		this.currentBitmap.GetPixelChannels(x, y, ref this.tempBuffer);
+		currentBitmap.GetPixelChannels(x, y, ref tempBuffer);
 
 		// We limit the color here because we don't want the value go over min or max
-		this.currentBitmap.ModifyPixelChannelsWithQuantError(ref this.tempBuffer, quantError, multiplier);
+		currentBitmap.ModifyPixelChannelsWithQuantError(ref tempBuffer, quantError, multiplier);
 
-		this.currentBitmap.SetPixelChannels(x, y, this.tempBuffer);
+		currentBitmap.SetPixelChannels(x, y, tempBuffer);
 	}
 }

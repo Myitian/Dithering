@@ -3,7 +3,6 @@
 
    This is free and unencumbered software released into the public domain.
 */
-using System;
 
 /// <summary>
 /// Sierra two row dithering for RGB bytes
@@ -14,7 +13,7 @@ public sealed class SierraTwoRowDitheringRGBByte : DitheringBase<byte>
 	/// Constructor for Sierra two row dithering
 	/// </summary>
 	/// <param name="colorfunc">Color function</param>
-	public SierraTwoRowDitheringRGBByte(ColorFunction colorfunc) : base(colorfunc, "SierraTwoRow", "_SIE2R")
+	public SierraTwoRowDitheringRGBByte(ColorFunction colorfunc) : base(colorfunc, "SierraTwoRow")
 	{
 
 	}
@@ -39,41 +38,41 @@ public sealed class SierraTwoRowDitheringRGBByte : DitheringBase<byte>
 
 		// Current row
 		int currentRow = y;
-		if (this.IsValidCoordinate(xPlusOne, currentRow))
+		if (IsValidCoordinate(xPlusOne, currentRow))
 		{
-			this.ModifyImageWithErrorAndMultiplier(xPlusOne, currentRow, quantError, 4.0 / 16.0);
+			ModifyImageWithErrorAndMultiplier(xPlusOne, currentRow, quantError, 4.0 / 16.0);
 		}
 
-		if (this.IsValidCoordinate(xPlusTwo, currentRow))
+		if (IsValidCoordinate(xPlusTwo, currentRow))
 		{
-			this.ModifyImageWithErrorAndMultiplier(xPlusTwo, currentRow, quantError, 3.0 / 16.0);
+			ModifyImageWithErrorAndMultiplier(xPlusTwo, currentRow, quantError, 3.0 / 16.0);
 		}
 
 		// Next row
 		currentRow = yPlusOne;
-		if (this.IsValidCoordinate(xMinusTwo, currentRow))
+		if (IsValidCoordinate(xMinusTwo, currentRow))
 		{
-			this.ModifyImageWithErrorAndMultiplier(xMinusTwo, currentRow, quantError, 1.0 / 16.0);
+			ModifyImageWithErrorAndMultiplier(xMinusTwo, currentRow, quantError, 1.0 / 16.0);
 		}
 
-		if (this.IsValidCoordinate(xMinusOne, currentRow))
+		if (IsValidCoordinate(xMinusOne, currentRow))
 		{
-			this.ModifyImageWithErrorAndMultiplier(xMinusOne, currentRow, quantError, 2.0 / 16.0);
+			ModifyImageWithErrorAndMultiplier(xMinusOne, currentRow, quantError, 2.0 / 16.0);
 		}
 
-		if (this.IsValidCoordinate(x, currentRow))
+		if (IsValidCoordinate(x, currentRow))
 		{
-			this.ModifyImageWithErrorAndMultiplier(x, currentRow, quantError, 3.0 / 16.0);
+			ModifyImageWithErrorAndMultiplier(x, currentRow, quantError, 3.0 / 16.0);
 		}
 
-		if (this.IsValidCoordinate(xPlusOne, currentRow))
+		if (IsValidCoordinate(xPlusOne, currentRow))
 		{
-			this.ModifyImageWithErrorAndMultiplier(xPlusOne, currentRow, quantError, 2.0 / 16.0);
+			ModifyImageWithErrorAndMultiplier(xPlusOne, currentRow, quantError, 2.0 / 16.0);
 		}
 
-		if (this.IsValidCoordinate(xPlusTwo, currentRow))
+		if (IsValidCoordinate(xPlusTwo, currentRow))
 		{
-			this.ModifyImageWithErrorAndMultiplier(xPlusTwo, currentRow, quantError, 1.0 / 16.0);
+			ModifyImageWithErrorAndMultiplier(xPlusTwo, currentRow, quantError, 1.0 / 16.0);
 		}
 	}
 }

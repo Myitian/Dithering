@@ -3,7 +3,6 @@
 
    This is free and unencumbered software released into the public domain.
 */
-using System;
 
 /// <summary>
 /// Fake dithering doesn't do any dithering. It only does color reduction
@@ -15,7 +14,7 @@ public sealed class FakeDitheringRGBByte : DitheringBase<byte>
 	/// </summary>
 	/// <param name="colorfunc"></param>
 	/// <returns></returns>
-	public FakeDitheringRGBByte(ColorFunction colorfunc) : base(colorfunc, "No dithering", "_NONE")
+	public FakeDitheringRGBByte(ColorFunction colorfunc) : base(colorfunc, "No dithering")
 	{
 		
 	}

@@ -3,7 +3,6 @@
 
    This is free and unencumbered software released into the public domain.
 */
-using System;
 
 /// <summary>
 /// Atkinson dithering for RGB bytes
@@ -14,7 +13,7 @@ public sealed class AtkinsonDitheringRGBByte : DitheringBase<byte>
 	/// Constructor for Atkinson dithering
 	/// </summary>
 	/// <param name="colorfunc">Color function</param>
-	public AtkinsonDitheringRGBByte(ColorFunction colorfunc) : base(colorfunc, "Atkinson", "_ATK")
+	public AtkinsonDitheringRGBByte(ColorFunction colorfunc) : base(colorfunc, "Atkinson")
 	{
 
 	}
@@ -42,38 +41,38 @@ public sealed class AtkinsonDitheringRGBByte : DitheringBase<byte>
 
 		// Current row
 		int currentRow = y;
-		if (this.IsValidCoordinate(xPlusOne, currentRow))
+		if (IsValidCoordinate(xPlusOne, currentRow))
 		{
-			this.ModifyImageWithErrorAndMultiplier(xPlusOne, currentRow, quantError, multiplier);
+			ModifyImageWithErrorAndMultiplier(xPlusOne, currentRow, quantError, multiplier);
 		}
 
-		if (this.IsValidCoordinate(xPlusTwo, currentRow))
+		if (IsValidCoordinate(xPlusTwo, currentRow))
 		{
-			this.ModifyImageWithErrorAndMultiplier(xPlusTwo, currentRow, quantError, multiplier);
+			ModifyImageWithErrorAndMultiplier(xPlusTwo, currentRow, quantError, multiplier);
 		}
 
 		// Next row
 		currentRow = yPlusOne;
-		if (this.IsValidCoordinate(xMinusOne, currentRow))
+		if (IsValidCoordinate(xMinusOne, currentRow))
 		{
-			this.ModifyImageWithErrorAndMultiplier(xMinusOne, currentRow, quantError, multiplier);
+			ModifyImageWithErrorAndMultiplier(xMinusOne, currentRow, quantError, multiplier);
 		}
 
-		if (this.IsValidCoordinate(x, currentRow))
+		if (IsValidCoordinate(x, currentRow))
 		{
-			this.ModifyImageWithErrorAndMultiplier(x, currentRow, quantError, multiplier);
+			ModifyImageWithErrorAndMultiplier(x, currentRow, quantError, multiplier);
 		}
 
-		if (this.IsValidCoordinate(xPlusOne, currentRow))
+		if (IsValidCoordinate(xPlusOne, currentRow))
 		{
-			this.ModifyImageWithErrorAndMultiplier(xPlusOne, currentRow, quantError, multiplier);
+			ModifyImageWithErrorAndMultiplier(xPlusOne, currentRow, quantError, multiplier);
 		}
 
 		// Next row
 		currentRow = yPlusTwo;
-		if (this.IsValidCoordinate(x, currentRow))
+		if (IsValidCoordinate(x, currentRow))
 		{
-			this.ModifyImageWithErrorAndMultiplier(x, currentRow, quantError, multiplier);
+			ModifyImageWithErrorAndMultiplier(x, currentRow, quantError, multiplier);
 		}
 	}
 }
