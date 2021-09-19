@@ -13,7 +13,7 @@
     <PackageLicenseExpression>Unlicense</PackageLicenseExpression>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <RootNamespace>Myitian.Dithering</RootNamespace>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <AssemblyName>Myitian.Dithering</AssemblyName>
   </PropertyGroup>
@@ -21,6 +21,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DebugType>none</DebugType>
     <DebugSymbols>false</DebugSymbols>
+    <DocumentationFile />
   </PropertyGroup>
 
 </Project>
